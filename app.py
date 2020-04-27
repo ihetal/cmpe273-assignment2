@@ -28,21 +28,9 @@ tests ={}
 submission ={}
 @app.route('/', methods =['GET','POST'])
 def hello():
-    print(request.method)
-    if request.method == 'POST':
-        file = request.files['data']
-        filename = secure_filename(file.filename)
-        print(filename)
-        myfile = json.loads(file.read())
-        answers = myfile['answers']
-        for keys in answers.keys():
-            print(keys)
-        #data = json.load(filename) 
-        #print("data is ",data)
-        return f'Hello, got file'
-    else:
-        name = request.args.get("name", "World")
-        return f'Hello, {escape(name)}!!!'
+    
+    name = request.args.get("name", "World")
+    return f'Hello, {escape(name)}!!!'
 
 @app.route('/api/tests', methods =['POST'])
 def createTest():
